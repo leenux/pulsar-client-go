@@ -1,0 +1,13 @@
+package: github.com/leenux/pulsar-client-go
+import:
+- package: github.com/leenux/pulsar-client-go
+  subpackages:
+  - api
+  - frame
+- package: github.com/golang/protobuf
+  subpackages:
+  - proto
+- package: github.com/google/gopacket
+  subpackages:
+  - layers
+  - pcap

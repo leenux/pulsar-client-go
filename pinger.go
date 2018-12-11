@@ -16,7 +16,7 @@ package pulsar
 import (
 	"context"
 
-	"github.com/Comcast/pulsar-client-go/api"
+	"github.com/leenux/pulsar-client-go/api"
 )
 
 // newPinger returns a ready-to-use pinger.

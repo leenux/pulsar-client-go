@@ -16,7 +16,7 @@ package pulsar
 import (
 	"fmt"
 
-	"github.com/Comcast/pulsar-client-go/api"
+	"github.com/leenux/pulsar-client-go/api"
 )
 
 // newErrUnexpectedMsg instantiates an ErrUnexpectedMsg error.

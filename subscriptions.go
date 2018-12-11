@@ -16,7 +16,7 @@ package pulsar
 import (
 	"sync"
 
-	"github.com/Comcast/pulsar-client-go/frame"
+	"github.com/leenux/pulsar-client-go/frame"
 )
 
 // newSubscriptions returns a ready-to-use subscriptions.

@@ -18,8 +18,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Comcast/pulsar-client-go/api"
-	"github.com/Comcast/pulsar-client-go/pulsartest"
+	"github.com/leenux/pulsar-client-go/api"
+	"github.com/leenux/pulsar-client-go/pulsartest"
 )
 
 func TestManagedClient(t *testing.T) {

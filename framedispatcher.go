@@ -18,7 +18,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/Comcast/pulsar-client-go/frame"
+	"github.com/leenux/pulsar-client-go/frame"
 )
 
 // newFrameDispatcher returns an instantiated frameDispatcher.

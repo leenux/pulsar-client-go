@@ -17,3 +17,6 @@ fuzz/pulsar-corpus-gen
 fuzz/*.zip
 fuzz/*-workdir/
 fuzz/initial-corpus/
+
+.idea
+vendor/

@@ -18,9 +18,9 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/Comcast/pulsar-client-go/api"
-	"github.com/Comcast/pulsar-client-go/frame"
 	"github.com/golang/protobuf/proto"
+	"github.com/leenux/pulsar-client-go/api"
+	"github.com/leenux/pulsar-client-go/frame"
 )
 
 // maxRedeliverUnacknowledged is the maximum number of

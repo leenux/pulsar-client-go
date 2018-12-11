@@ -22,7 +22,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Comcast/pulsar-client-go/api"
+	"github.com/leenux/pulsar-client-go/api"
 )
 
 // TestClient_Int_PubSub creates a producer and multiple consumers.

@@ -19,10 +19,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Comcast/pulsar-client-go/api"
-	"github.com/Comcast/pulsar-client-go/frame"
-	"github.com/Comcast/pulsar-client-go/pulsartest"
 	"github.com/golang/protobuf/proto"
+	"github.com/leenux/pulsar-client-go/api"
+	"github.com/leenux/pulsar-client-go/frame"
+	"github.com/leenux/pulsar-client-go/pulsartest"
 )
 
 func TestManagedConsumer(t *testing.T) {

@@ -19,7 +19,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Comcast/pulsar-client-go/frame"
+	"github.com/leenux/pulsar-client-go/frame"
 )
 
 func TestClient_ServerInitiatedClose(t *testing.T) {

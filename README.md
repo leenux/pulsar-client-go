@@ -3,7 +3,7 @@ pulsar-client-go
 
 A Go client library for the [Apache Pulsar](https://pulsar.incubator.apache.org/) project.
 
-[![GoDoc](https://godoc.org/github.com/Comcast/pulsar-client-go?status.svg)](https://godoc.org/github.com/Comcast/pulsar-client-go)
+[![GoDoc](https://godoc.org/github.com/leenux/pulsar-client-go?status.svg)](https://godoc.org/github.com/leenux/pulsar-client-go)
 
 ## Alternatives
 
@@ -33,14 +33,14 @@ The following is an incomplete list of features that are not yet implemented:
 ## Installation
 
 ```shell
-go get -u github.com/Comcast/pulsar-client-go
+go get -u github.com/leenux/pulsar-client-go
 ```
 
 _Note: The package name is `pulsar`_
 
 ## Example
 
-An example of a producer and consumer can be seen in the included [cli](https://github.com/Comcast/pulsar-client-go/blob/master/cli/main.go) application.
+An example of a producer and consumer can be seen in the included [cli](https://github.com/leenux/pulsar-client-go/blob/master/cli/main.go) application.
 
 ## Contributions
 

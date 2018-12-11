@@ -232,6 +232,48 @@ CONSUMER:
 	}
 }
 
+// RedeliverUnacknowledged sends of REDELIVER_UNACKNOWLEDGED_MESSAGES request
+// for all messages that have not been acked.
+func (m *ManagedConsumer) RedeliverUnacknowledged(ctx context.Context) error {
+	for {
+		m.mu.RLock()
+		consumer := m.consumer
+		wait := m.waitc
+		m.mu.RUnlock()
+
+		if consumer == nil {
+			select {
+			case <-wait:
+				// a new consumer was established.
+				// Re-enter read-lock to obtain it.
+				continue
+			case <-ctx.Done():
+				return ctx.Err()
+			}
+		}
+
+		// TODO: determine when, if ever, to call
+		// consumer.RedeliverOverflow
+
+		if err := consumer.RedeliverUnacknowledged(ctx); err != nil {
+			return err
+		}
+
+		select {
+		case <-ctx.Done():
+			return ctx.Err()
+
+		case <-consumer.Closed():
+			return errors.New("consumer closed")
+
+		case <-consumer.ConnClosed():
+			return errors.New("consumer connection closed")
+		default:
+			return nil
+		}
+	}
+}
+
 // set unblocks the "wait" channel (if not nil),
 // and sets the consumer under lock.
 func (m *ManagedConsumer) set(c *Consumer) {

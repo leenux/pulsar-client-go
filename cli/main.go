@@ -31,7 +31,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/Comcast/pulsar-client-go"
+	"github.com/leenux/pulsar-client-go"
 )
 
 var args = struct {

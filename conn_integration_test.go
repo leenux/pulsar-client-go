@@ -18,9 +18,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Comcast/pulsar-client-go/api"
-	"github.com/Comcast/pulsar-client-go/frame"
 	"github.com/golang/protobuf/proto"
+	"github.com/leenux/pulsar-client-go/api"
+	"github.com/leenux/pulsar-client-go/frame"
 )
 
 func TestConn_Int_Connect(t *testing.T) {

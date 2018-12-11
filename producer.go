@@ -20,9 +20,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/Comcast/pulsar-client-go/api"
-	"github.com/Comcast/pulsar-client-go/frame"
 	"github.com/golang/protobuf/proto"
+	"github.com/leenux/pulsar-client-go/api"
+	"github.com/leenux/pulsar-client-go/frame"
 )
 
 // ErrClosedProducer is returned when attempting to send

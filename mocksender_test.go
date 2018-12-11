@@ -16,8 +16,8 @@ package pulsar
 import (
 	"sync"
 
-	"github.com/Comcast/pulsar-client-go/api"
-	"github.com/Comcast/pulsar-client-go/frame"
+	"github.com/leenux/pulsar-client-go/api"
+	"github.com/leenux/pulsar-client-go/frame"
 )
 
 // mockSender implements the sender interface

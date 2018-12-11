@@ -20,7 +20,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/Comcast/pulsar-client-go/api"
+	"github.com/leenux/pulsar-client-go/api"
 )
 
 // NewManagedClientPool initializes a ManagedClientPool.

@@ -22,8 +22,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/Comcast/pulsar-client-go/api"
-	"github.com/Comcast/pulsar-client-go/frame"
+	"github.com/leenux/pulsar-client-go/api"
+	"github.com/leenux/pulsar-client-go/frame"
 )
 
 // newTCPConn creates a conn using a TCPv4 connection to the given

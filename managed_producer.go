@@ -18,7 +18,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/Comcast/pulsar-client-go/api"
+	"github.com/leenux/pulsar-client-go/api"
 )
 
 // ManagedProducerConfig is used to configure a ManagedProducer.

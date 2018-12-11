@@ -1,0 +1,13 @@
+hash: 72cc0087e7225c56f263722de489729c115ad7c753343991e48c2bd362f98f71
+updated: 2018-12-11T12:41:05.72677897+08:00
+imports:
+- name: github.com/golang/protobuf
+  version: 1d3f30b51784bec5aad268e59fd3c2fc1c2fe73f
+  subpackages:
+  - proto
+- name: github.com/google/gopacket
+  version: d5dee4e2f7c6d5f85ef56fd3f09456496c853bd8
+  subpackages:
+  - layers
+  - pcap
+testImports: []

@@ -21,10 +21,10 @@ import (
 	"os"
 	"path"
 
-	"github.com/Comcast/pulsar-client-go/frame"
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"
 	"github.com/google/gopacket/pcap"
+	"github.com/leenux/pulsar-client-go/frame"
 )
 
 func main() {

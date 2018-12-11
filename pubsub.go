@@ -17,8 +17,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/Comcast/pulsar-client-go/api"
 	"github.com/golang/protobuf/proto"
+	"github.com/leenux/pulsar-client-go/api"
 )
 
 // newPubsub returns a ready-to-use pubsub.

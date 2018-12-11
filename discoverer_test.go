@@ -18,9 +18,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Comcast/pulsar-client-go/api"
-	"github.com/Comcast/pulsar-client-go/frame"
 	"github.com/golang/protobuf/proto"
+	"github.com/leenux/pulsar-client-go/api"
+	"github.com/leenux/pulsar-client-go/frame"
 )
 
 func TestDiscoverer_PartitionedMetadata(t *testing.T) {
@@ -55,7 +55,7 @@ func TestDiscoverer_PartitionedMetadata(t *testing.T) {
 	}
 	f := frame.Frame{
 		BaseCmd: &api.BaseCommand{
-			Type: api.BaseCommand_PARTITIONED_METADATA_RESPONSE.Enum(),
+			Type:                      api.BaseCommand_PARTITIONED_METADATA_RESPONSE.Enum(),
 			PartitionMetadataResponse: &expected,
 		},
 	}
