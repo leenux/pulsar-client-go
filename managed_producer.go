@@ -100,6 +100,28 @@ func (m *ManagedProducer) Send(ctx context.Context, payload []byte) (*api.Comman
 	}
 }
 
+func (m *ManagedProducer) SendWithProperts(ctx context.Context, kv []*api.KeyValue, payload []byte) (*api.CommandSendReceipt, error) {
+	for {
+		m.mu.RLock()
+		producer := m.producer
+		wait := m.waitc
+		m.mu.RUnlock()
+
+		if producer != nil {
+			return producer.SendWithProperts(ctx, kv, payload)
+		}
+
+		select {
+		case <-wait:
+			// a new producer was established.
+			// Re-enter read-lock to obtain it.
+			continue
+		case <-ctx.Done():
+			return nil, ctx.Err()
+		}
+	}
+}
+
 // set unblocks the "wait" channel (if not nil),
 // and sets the producer under lock.
 func (m *ManagedProducer) set(p *Producer) {

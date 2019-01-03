@@ -123,6 +123,69 @@ func (p *Producer) Send(ctx context.Context, payload []byte) (*api.CommandSendRe
 	}
 }
 
+func (p *Producer) SendWithProperts(ctx context.Context, kv []*api.KeyValue, payload []byte) (*api.CommandSendReceipt, error) {
+	p.mu.RLock()
+	if p.isClosed {
+		p.mu.RUnlock()
+		return nil, ErrClosedProducer
+	}
+	p.mu.RUnlock()
+
+	sequenceID := p.seqID.next()
+
+	cmd := api.BaseCommand{
+		Type: api.BaseCommand_SEND.Enum(),
+		Send: &api.CommandSend{
+			ProducerId:  proto.Uint64(p.producerID),
+			SequenceId:  sequenceID,
+			NumMessages: proto.Int32(1),
+		},
+	}
+	metadata := api.MessageMetadata{
+		SequenceId:   sequenceID,
+		ProducerName: proto.String(p.producerName),
+		PublishTime:  proto.Uint64(uint64(time.Now().Unix()) * 1000),
+		Properties:   kv,
+		Compression:  api.CompressionType_NONE.Enum(),
+	}
+
+	resp, cancel, err := p.dispatcher.registerProdSeqIDs(p.producerID, *sequenceID)
+	if err != nil {
+		return nil, err
+	}
+	defer cancel()
+
+	if err := p.s.sendPayloadCmd(cmd, metadata, payload); err != nil {
+		return nil, err
+	}
+
+	// wait for timeout, closed producer, or response/error
+	select {
+	case <-ctx.Done():
+		return nil, ctx.Err()
+
+	case <-p.Closed():
+		return nil, ErrClosedProducer
+
+	case f := <-resp:
+		msgType := f.BaseCmd.GetType()
+		// Possible responses types are:
+		//  - SendReceipt
+		//  - SendError
+		switch msgType {
+		case api.BaseCommand_SEND_RECEIPT:
+			return f.BaseCmd.GetSendReceipt(), nil
+
+		case api.BaseCommand_SEND_ERROR:
+			errMsg := f.BaseCmd.GetSendError()
+			return nil, fmt.Errorf("%s: %s", errMsg.GetError().String(), errMsg.GetMessage())
+
+		default:
+			return nil, newErrUnexpectedMsg(msgType, p.producerID, *sequenceID)
+		}
+	}
+}
+
 // Closed returns a channel that will block _unless_ the
 // producer has been closed, in which case the channel will have
 // been closed.
